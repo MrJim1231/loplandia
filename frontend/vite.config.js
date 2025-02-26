@@ -8,4 +8,10 @@ export default defineConfig({
     port: 3000, // Меняем порт на 3000
     host: true, // Делаем сервер доступным в сети
   },
+  build: {
+    chunkSizeWarningLimit: 1000, // Увеличиваем лимит чанков до 1000 KB
+  },
+  define: {
+    'process.env.API_URL': JSON.stringify('https://loplandia-backend.onrender.com'),
+  },
 })
