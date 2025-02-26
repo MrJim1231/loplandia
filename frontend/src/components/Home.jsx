@@ -10,7 +10,7 @@ import './reset.css'
 const Home = () => {
   const [categories, setCategories] = useState([])
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768) // Проверяем ширину экрана
-  const [error, setError] = useState(null) // Для хранения ошибки загрузки данных
+  const [error, setError] = useState(null) // Для отображения ошибки, если она возникнет
   const { language } = useContext(LanguageContext)
   const location = useLocation()
 
@@ -58,6 +58,9 @@ const Home = () => {
         const categoriesResponse = await axios.get(`${API_URL}/categories`)
         const categoriesData = categoriesResponse.data
 
+        // Логируем данные для диагностики
+        console.log('Ответ от API (категории):', categoriesData)
+
         // Проверяем, что данные категорий являются массивом
         if (Array.isArray(categoriesData)) {
           const productRequests = categoriesData.map((category) => axios.get(`${API_URL}/products/category/allproductsofsubcategories/${category._id}`))
@@ -85,7 +88,7 @@ const Home = () => {
 
           setCategories(categoriesWithProducts)
         } else {
-          throw new Error('Данные категорий не являются массивом')
+          throw new Error('Ответ с сервера не является массивом')
         }
       } catch (error) {
         console.error('Ошибка при загрузке категорий и товаров:', error)
@@ -107,6 +110,7 @@ const Home = () => {
 
   return (
     <div>
+      {error && <div className={styles.errorMessage}>{error}</div>} {/* Отображаем ошибку, если она есть */}
       <header className={styles.heroSection}>
         {location.pathname === '/' && <img src={bannerImage} alt={currentTexts.welcome} className={styles.heroBanner} loading="eager" />}
         <h1 className={styles.heroTitle}>{currentTexts.welcome}</h1>
@@ -115,46 +119,41 @@ const Home = () => {
           {currentTexts.shopNow}
         </Link>
       </header>
-
       <section className={styles.featuredProducts}>
         <h2 className={styles.sectionTitle}>{currentTexts.popularProducts}</h2>
-        {error ? (
-          <p className={styles.errorMessage}>{error}</p>
-        ) : (
-          <div className={styles.productsGrid}>
-            {categories.map((category) =>
-              category.products
-                .filter((product) => product.available) // Показываем только товары в наличии
-                .map((product) => {
-                  const discountedPrice = getDiscountedPrice(product, category)
-                  return (
-                    <div key={product._id} className={styles.productCard}>
-                      <Link to={`/group/${product.groupId}/products`}>
-                        <img src={product.image[0]} alt={product.name} className={styles.productImage} loading="lazy" />
-                        <h3 className={styles.productName}>{product.name}</h3>
-                        <p className={styles.productPrice}>
-                          {currentTexts.price}:{' '}
-                          {discountedPrice ? (
-                            <>
-                              <span className={styles.priceBeforeDiscount}>
-                                {product.price} {isMobile ? '' : 'грн'}
-                              </span>
-                              <span className={styles.priceAfterDiscount}>{discountedPrice.toFixed(2)} грн</span>
-                            </>
-                          ) : (
-                            <span className={styles.priceAfterDiscount}>{product.price} грн</span>
-                          )}
-                        </p>
-                        <p className={styles.productAvailable}>
-                          <strong>{currentTexts.availability}:</strong> {isMobile ? '✔' : currentTexts.available}
-                        </p>
-                      </Link>
-                    </div>
-                  )
-                })
-            )}
-          </div>
-        )}
+        <div className={styles.productsGrid}>
+          {categories.map((category) =>
+            category.products
+              .filter((product) => product.available) // Показываем только товары в наличии
+              .map((product) => {
+                const discountedPrice = getDiscountedPrice(product, category)
+                return (
+                  <div key={product._id} className={styles.productCard}>
+                    <Link to={`/group/${product.groupId}/products`}>
+                      <img src={product.image[0]} alt={product.name} className={styles.productImage} loading="lazy" />
+                      <h3 className={styles.productName}>{product.name}</h3>
+                      <p className={styles.productPrice}>
+                        {currentTexts.price}:{' '}
+                        {discountedPrice ? (
+                          <>
+                            <span className={styles.priceBeforeDiscount}>
+                              {product.price} {isMobile ? '' : 'грн'}
+                            </span>
+                            <span className={styles.priceAfterDiscount}>{discountedPrice.toFixed(2)} грн</span>
+                          </>
+                        ) : (
+                          <span className={styles.priceAfterDiscount}>{product.price} грн</span>
+                        )}
+                      </p>
+                      <p className={styles.productAvailable}>
+                        <strong>{currentTexts.availability}:</strong> {isMobile ? '✔' : currentTexts.available}
+                      </p>
+                    </Link>
+                  </div>
+                )
+              })
+          )}
+        </div>
       </section>
     </div>
   )
