@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { Link, useLocation } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './Home.module.css'
@@ -53,10 +54,10 @@ const Home = () => {
 
     const fetchCategoriesWithProducts = async () => {
       try {
-        const categoriesResponse = await axios.get('http://localhost:5000/api/categories')
+        const categoriesResponse = await axios.get(`${API_URL}/categories`)
         const categoriesData = categoriesResponse.data
 
-        const productRequests = categoriesData.map((category) => axios.get(`http://localhost:5000/api/products/category/allproductsofsubcategories/${category._id}`))
+        const productRequests = categoriesData.map((category) => axios.get(`${API_URL}/products/category/allproductsofsubcategories/${category._id}`))
 
         const productResponses = await Promise.all(productRequests)
 
