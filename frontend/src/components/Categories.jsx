@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { Link } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './Categories.module.css'
@@ -15,7 +16,7 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data: allCategories } = await axios.get('http://localhost:5000/api/categories', { cache: 'no-store' })
+        const { data: allCategories } = await axios.get(`${API_URL}/categories`, { cache: 'no-store' })
         setCategories(allCategories.filter((category) => !excludedCategories.has(category.name)))
       } catch (err) {
         setError(language === 'UA' ? 'Помилка при завантаженні категорій' : 'Ошибка при загрузке категорий')
