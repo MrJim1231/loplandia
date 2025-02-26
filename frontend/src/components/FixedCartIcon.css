@@ -1,0 +1,21 @@
+.cartIcon {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  font-size: 30px; /* Увеличиваем размер иконки */
+  color: #ffd700; /* Устанавливаем желтый цвет */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Центрируем иконку */
+  text-decoration: none;
+  z-index: 9999; /* Обеспечиваем, чтобы она была на переднем плане */
+}
+
+.cartCount {
+  background-color: transparent; /* Убираем фон */
+  color: red; /* Цвет счетчика — красный */
+  font-size: 14px;
+  padding: 4px 8px; /* Увеличиваем счетчик для видимости */
+  margin-left: 8px;
+  display: inline-block; /* Гарантируем, что счетчик будет отображаться */
+}

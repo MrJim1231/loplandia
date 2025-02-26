@@ -1,0 +1,136 @@
+/* Стили для контейнера товаров */
+.productsContainer {
+  padding: 20px;
+}
+
+/* Заголовок секции с товарами */
+.productsTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Сетка товаров */
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки для десктопа */
+  gap: 20px; /* Зазор между карточками */
+  justify-items: center;
+}
+
+/* Карточка товара */
+.productCard {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px; /* Уменьшаем внутренние отступы */
+  width: 90%; /* Уменьшаем ширину карточки */
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+/* При наведении увеличиваем карточку */
+.productCard:hover {
+  transform: translateY(-5px);
+}
+
+/* Картинка товара */
+.productImages {
+  margin-bottom: 10px;
+}
+
+.productImage {
+  width: 100%;
+  max-height: 180px; /* Уменьшаем максимальную высоту изображения */
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Стили для фильтров */
+.sortContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sortLabel {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.sortSelect {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Стили для выпадающего списка сортировки */
+.sortSelect:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Стили для фильтров по параметрам */
+.paramSelector {
+  margin-top: 10px;
+}
+
+.paramDropdown {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+/* Добавим стили для фокуса на фильтре */
+.paramDropdown:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.priceBeforeDiscount {
+  text-decoration: line-through;
+  color: red; /* Цвет перечеркнутой цены */
+  margin-right: 10px;
+}
+
+.priceAfterDiscount {
+  font-weight: bold;
+  color: green; /* Цвет новой цены */
+}
+
+/* Адаптивность */
+@media (max-width: 1024px) {
+  /* Для больших экранов, но меньше чем десктоп */
+  .productsGrid {
+    grid-template-columns: repeat(3, 1fr); /* 3 карточки в строке */
+  }
+}
+
+@media (max-width: 768px) {
+  /* Для мобильных устройств */
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 карточки в строке */
+  }
+}
+
+@media (max-width: 480px) {
+  /* Для очень маленьких экранов */
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    gap: 10px; /* Уменьшаем промежуток между карточками */
+  }
+}
+
+.navigationLinks {
+  margin-left: 20px;
+}

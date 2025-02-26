@@ -1,0 +1,201 @@
+/* Основные стили */
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar a:focus,
+.navbar a:active {
+  background-color: #333; /* Сохраняем фон нажатого элемента */
+  color: #fff; /* Цвет текста на активном элементе */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Легкая тень при активном элементе */
+}
+
+/* Стили для активного состояния */
+.active {
+  background-color: #007bff; /* Цвет фона для активного пункта */
+  color: #fff;
+  padding: 8px 15px; /* Поддерживаем одинаковый padding */
+  border-radius: 4px; /* Скругление углов */
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.6); /* Легкая тень для активного пункта */
+}
+
+/* Логотип */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #faebd7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Обычное меню (десктоп) */
+.navLinks {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 8px 15px;
+  transition: all 0.3s ease;
+  display: block;
+  border-radius: 4px;
+}
+
+.navLinks a:hover {
+  background-color: #555;
+  color: #ffd700;
+  transform: scale(1.1);
+}
+
+/* Блок с кнопками входа/выхода */
+.authLinks {
+  display: flex;
+  gap: 15px;
+}
+
+.logoutButton {
+  color: red;
+  cursor: pointer;
+}
+
+/* Отступ для последнего элемента */
+.navLinks li:last-child {
+  margin-right: 35px; /* Добавляем отступ справа */
+}
+
+.languageWrapper {
+  margin: 4px 35px 0px 0px;
+}
+
+.languageSelect {
+  background-color: white; /* Убираем прозрачный фон и делаем белым */
+  border: 1px solid #ccc; /* Добавляем границу */
+  font-size: 14px; /* Меньший размер шрифта */
+  font-family: 'Arial', sans-serif; /* Шрифт */
+  padding: 4px 8px; /* Уменьшены отступы для уменьшения высоты */
+  cursor: pointer; /* Курсор при наведении */
+  color: #333; /* Цвет текста */
+  transition: all 0.3s ease; /* Плавные переходы */
+  border-radius: 4px; /* Добавлен радиус границы */
+  height: 32px; /* Установлена фиксированная высота */
+}
+
+.languageLabel {
+  padding-right: 10px;
+  color: #fff;
+}
+
+.languageSelect:focus {
+  outline: none; /* Убираем стандартное обведение */
+  border-color: #007bff; /* Цвет границы при фокусе */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3); /* Добавляем тень при фокусе */
+}
+
+.languageSelect option {
+  background-color: white; /* Фон для элементов списка */
+  color: #333; /* Цвет текста в списке */
+  padding: 6px 8px; /* Отступы для пунктов списка */
+}
+
+.languageSelect:hover {
+  background-color: #f5f5f5; /* Фон при наведении */
+}
+
+/* Бургер-меню */
+.burger {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1100;
+  background: none;
+  border: none;
+  padding: 10px;
+}
+
+.burgerIcon {
+  font-size: 32px;
+  color: white;
+  padding-right: 30px;
+}
+
+/* Выезжающее боковое меню */
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: -250px; /* Начальное положение */
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+  transition: right 0.3s ease-in-out;
+  box-shadow: -4px 0 6px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.sidebar.open {
+  right: 0; /* Выезжает справа */
+}
+
+.sidebar ul {
+  list-style: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.sidebar li {
+  padding: 15px 0;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  transition: background 0.3s ease;
+}
+
+.sidebar a:hover {
+  background: #444;
+}
+
+/* Показываем бургер и скрываем основное меню на мобильных */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  .navLinks {
+    display: none; /* Скрываем обычное меню на мобильных */
+  }
+
+  .authLinks {
+    display: flex;
+    flex-direction: column;
+  }
+}

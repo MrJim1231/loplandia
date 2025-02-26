@@ -1,0 +1,112 @@
+/* Общий контейнер для страницы деталей продукта */
+.product-details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* При наведении на контейнер, добавляем эффект */
+.product-details:hover {
+  transform: scale(1.02);
+}
+
+/* Контейнер для изображения */
+.product-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  margin-right: 20px; /* Отступ между картинкой и текстом */
+}
+
+/* Стиль для изображения продукта */
+.product-details-image {
+  width: 100%;
+  max-width: 400px; /* Ограничиваем размер изображения */
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* Описание продукта */
+.product-description {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Описание текста */
+.product-details p {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  text-align: left;
+  max-width: 800px;
+}
+
+/* Стиль для цены продукта */
+.product-details .price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #f60;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Стили для дополнительных параметров (например, параметр продукта) */
+.product-details .param {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #333;
+  margin-top: 10px;
+  text-align: left;
+}
+
+/* Кнопка добавления в корзину */
+.add-to-cart-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #f60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px;
+  margin-top: 20px;
+}
+
+.add-to-cart-button:hover {
+  background-color: #e55a00;
+  transform: scale(1.05);
+}
+
+.add-to-cart-button,
+.go-to-cart-button {
+  padding: 12px 25px;
+  font-size: 1rem;
+  background-color: #f60;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  width: 200px;
+  margin-top: 10px;
+}
+
+.add-to-cart-button:hover,
+.go-to-cart-button:hover {
+  background-color: #e55a00;
+  transform: scale(1.05);
+}

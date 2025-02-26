@@ -1,0 +1,100 @@
+/* Categories.module.css */
+
+/* Основной контейнер для категорий */
+.categoriesContainer {
+  padding: 20px;
+}
+
+/* Заголовок и описание */
+.categoriesTitle {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.categoriesDescription {
+  font-size: 16px;
+  /* color: #777; */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Сетка для отображения категорий */
+.categoriesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки для десктопа */
+  gap: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+/* Ссылка на категорию */
+.categoryLink {
+  display: block;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-decoration: none;
+  color: #333;
+}
+
+/* Стили для изображения категорий */
+.categoryImage {
+  max-width: 100%;
+  /* height: auto; */
+  border-radius: 8px;
+  object-fit: cover; /* Картинки будут обрезаться и масштабироваться */
+  transition: transform 0.3s ease;
+}
+
+/* Стили для названия категории */
+.categoryName {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Эффекты на карточках при наведении */
+.categoryLink:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Стили для состояния "Ошибка" или "Загрузка" */
+.error,
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #ff4747;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки на мобильных */
+  }
+
+  .categoryName {
+    font-size: 16px; /* Уменьшаем размер шрифта для мобильных */
+  }
+}
+
+@media (max-width: 480px) {
+  .categoriesGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    gap: 10px; /* Уменьшаем промежуток между карточками */
+  }
+
+  .categoryImage {
+    height: auto;
+  }
+}
+
+.backToHomeLink {
+  margin-left: 20px;
+}

@@ -1,0 +1,99 @@
+.loginContainer {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.loginContainer h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.loginContainer form {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.loginContainer input:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+.loginContainer button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginContainer button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.loginContainer button:hover:not(:disabled) {
+  background-color: #0056b3;
+  color: white;
+  text-decoration: none;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.authSwitch {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.authSwitch button {
+  background: none;
+  border: none;
+  color: #0056b3;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.authSwitch button:hover {
+  text-decoration: underline;
+}
+
+.authActions {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.authActions button {
+  background: none;
+  border: none;
+  color: #0056b3;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.authActions button:hover {
+  text-decoration: underline;
+  /* color: white; */
+}

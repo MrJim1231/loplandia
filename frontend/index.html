@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Магазин постільної білизни з найкращою якістю для вашого комфорту." />
+    <meta name="keywords" content="постільна білизна, комфорт, якість, магазин постільної білизни" />
+    <meta name="author" content="Sleep & Dream" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Скрипт для предзагрузки изображения только на главной странице -->
+    <script>
+      if (window.location.pathname === '/') {
+        const link = document.createElement('link')
+        link.rel = 'preload'
+        link.href = '/assets/image/banner/banner.jpg' // Путь к изображению
+        link.as = 'image'
+        link.type = 'image/jpeg'
+        document.head.appendChild(link)
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

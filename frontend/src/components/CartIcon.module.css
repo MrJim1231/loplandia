@@ -1,0 +1,57 @@
+.cartIcon {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  font-size: 30px;
+  color: black; /* Черный цвет для десктопной версии */
+  background-color: white; /* Белый круг вокруг иконки для десктопа */
+  border-radius: 50%; /* Круглая иконка для десктопа */
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  opacity: 0.8;
+}
+
+/* Стиль для счетчика */
+.cartCount {
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  font-weight: bold;
+}
+
+/* Адаптивный стиль для мобильной версии */
+@media (max-width: 768px) {
+  .cartIcon {
+    background-color: transparent; /* Убираем белый фон на мобильной версии */
+    border-radius: 0; /* Убираем круглую форму */
+    top: 8px;
+    right: 80px;
+    width: auto; /* Убираем фиксированную ширину */
+    height: auto; /* Убираем фиксированную высоту */
+    opacity: 1; /* Убираем прозрачность на мобильной версии */
+    box-shadow: none; /* Убираем тень на мобильной версии */
+  }
+  .cartCount {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+  }
+  .cartIconImage {
+    color: white; /* Белый цвет иконки на мобильной версии */
+  }
+}

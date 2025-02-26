@@ -1,0 +1,24 @@
+.scroll-to-top {
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  z-index: 1000;
+}
+
+.scroll-icon {
+  font-size: 30px;
+  color: black; /* Делаем иконку черной */
+  background-color: white; /* Белый круг вокруг иконки */
+  border-radius: 50%; /* Сделаем круглый фон вокруг иконки */
+  padding: 10px; /* Добавляем немного отступов, чтобы иконка не была прижата к краю */
+  cursor: pointer;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Легкая тень для эффекта */
+  opacity: 0.8; /* Добавляем прозрачность */
+}
+
+.scroll-icon:hover {
+  color: #007bff;
+  transform: scale(1.1); /* Эффект увеличения при наведении */
+  opacity: 1; /* Убираем прозрачность на ховере */
+}

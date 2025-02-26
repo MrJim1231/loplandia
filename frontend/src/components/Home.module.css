@@ -1,0 +1,156 @@
+/* Убираем ограничение ширины контейнера для баннера */
+.heroSection {
+  position: relative;
+  text-align: center;
+  background-color: #f8f9fa;
+  width: 100%;
+  overflow: hidden; /* Обеспечивает, что изображение не выходит за пределы */
+  top: -15px;
+}
+
+.heroBanner {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: cover;
+  display: block;
+}
+
+.heroTitle {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.heroSubtitle {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.shopNow {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.shopNow:hover {
+  background-color: #555;
+  color: #ffd700;
+}
+
+/* Популярные товары */
+.featuredProducts {
+  padding: 40px 20px;
+  background-color: #ffffff;
+}
+
+.sectionTitle {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.productsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 колонки */
+  gap: 20px;
+  justify-content: center;
+}
+
+.productCard {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.productCard:hover {
+  transform: scale(1.05);
+}
+
+.productImage {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Обновленные стили для названия и цены */
+.productName {
+  font-weight: bold;
+  margin: 5px 0;
+  color: black; /* Черный цвет */
+  text-decoration: none; /* Убираем подчеркивание */
+  text-align: center;
+}
+
+.productPrice {
+  color: black; /* Черный цвет */
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+/* Убираем подчеркивание у всех ссылок внутри карточек товаров */
+.productCard a {
+  text-decoration: none; /* Убираем подчеркивание */
+  color: inherit; /* Наследуем цвет от родителя */
+}
+
+.priceBeforeDiscount {
+  text-decoration: line-through;
+  color: red; /* Цвет перечеркнутой цены */
+  margin-right: 4px;
+}
+
+.priceAfterDiscount {
+  font-weight: bold;
+  color: green; /* Цвет новой цены */
+}
+
+.productAvailable {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Стили для мобильных устройств */
+@media (max-width: 768px) {
+  .productsGrid {
+    grid-template-columns: repeat(2, 1fr); /* 2 колонки */
+    gap: 10px; /* Уменьшаем промежуток между карточками */
+  }
+
+  .heroTitle {
+    font-size: 24px; /* Уменьшаем размер заголовка на мобильных */
+  }
+
+  .heroSubtitle {
+    font-size: 16px; /* Уменьшаем размер подзаголовка на мобильных */
+  }
+
+  .shopNow {
+    font-size: 16px; /* Уменьшаем размер кнопки */
+    padding: 8px 16px;
+  }
+
+  .productImage {
+    height: 180px; /* Уменьшаем высоту изображений товаров */
+    border-radius: 5px;
+  }
+
+  .productCard {
+    padding: 10px; /* Добавляем отступы внутри карточки */
+  }
+
+  .productName,
+  .productPrice {
+    font-size: 14px; /* Уменьшаем размер шрифта для названия и цены товаров */
+  }
+
+  .productPrice {
+    margin-bottom: 0;
+  }
+}
