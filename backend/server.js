@@ -24,7 +24,7 @@ const port = process.env.PORT || 5000
 
 // Настройка CORS
 const corsOptions = {
-  origin: process.env.CLIENT_URL || 'https://loplandia.onrender.com', // Разрешаем запросы с фронтенда
+  origin: process.env.CLIENT_URL || 'https://loplandia-frontend.onrender.com', // Разрешаем запросы с фронтенда
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }
