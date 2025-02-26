@@ -10,7 +10,7 @@ import './reset.css'
 const Home = () => {
   const [categories, setCategories] = useState([])
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768) // Проверяем ширину экрана
-  const [error, setError] = useState(null) // Для отображения ошибки, если она возникнет
+  const [error, setError] = useState(null)
   const { language } = useContext(LanguageContext)
   const location = useLocation()
 
@@ -56,9 +56,13 @@ const Home = () => {
     const fetchCategoriesWithProducts = async () => {
       try {
         const categoriesResponse = await axios.get(`${API_URL}/categories`)
-        const categoriesData = categoriesResponse.data
 
-        // Логируем данные для диагностики
+        // Проверка, что ответ имеет тип JSON
+        if (!categoriesResponse.headers['content-type'].includes('application/json')) {
+          throw new Error('Ответ не является JSON')
+        }
+
+        const categoriesData = categoriesResponse.data
         console.log('Ответ от API (категории):', categoriesData)
 
         // Проверяем, что данные категорий являются массивом
@@ -110,7 +114,7 @@ const Home = () => {
 
   return (
     <div>
-      {error && <div className={styles.errorMessage}>{error}</div>} {/* Отображаем ошибку, если она есть */}
+      {error && <div className="error">{error}</div>} {/* Показ ошибки, если есть */}
       <header className={styles.heroSection}>
         {location.pathname === '/' && <img src={bannerImage} alt={currentTexts.welcome} className={styles.heroBanner} loading="eager" />}
         <h1 className={styles.heroTitle}>{currentTexts.welcome}</h1>
