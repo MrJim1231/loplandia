@@ -10,7 +10,6 @@ import './reset.css'
 const Home = () => {
   const [categories, setCategories] = useState([])
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768) // Проверяем ширину экрана
-  const [error, setError] = useState(null)
   const { language } = useContext(LanguageContext)
   const location = useLocation()
 
@@ -55,48 +54,35 @@ const Home = () => {
 
     const fetchCategoriesWithProducts = async () => {
       try {
-        const categoriesResponse = await axios.get(`${API_URL}/categories`)
-
-        // Проверка, что ответ имеет тип JSON
-        if (!categoriesResponse.headers['content-type'].includes('application/json')) {
-          throw new Error('Ответ не является JSON')
-        }
-
+        const categoriesResponse = await axios.get(`${API_URL}/api/categories`)
         const categoriesData = categoriesResponse.data
-        console.log('Ответ от API (категории):', categoriesData)
 
-        // Проверяем, что данные категорий являются массивом
-        if (Array.isArray(categoriesData)) {
-          const productRequests = categoriesData.map((category) => axios.get(`${API_URL}/products/category/allproductsofsubcategories/${category._id}`))
+        const productRequests = categoriesData.map((category) => axios.get(`${API_URL}/api/products/category/allproductsofsubcategories/${category._id}`))
 
-          const productResponses = await Promise.all(productRequests)
+        const productResponses = await Promise.all(productRequests)
 
-          const categoriesWithProducts = categoriesData.map((category, index) => {
-            const uniqueProducts = []
-            const productNames = new Set()
+        const categoriesWithProducts = categoriesData.map((category, index) => {
+          const uniqueProducts = []
+          const productNames = new Set()
 
-            productResponses[index].data
-              .filter((product) => product.available) // Оставляем только товары в наличии
-              .forEach((product) => {
-                if (product.price >= 500 && !productNames.has(product.name)) {
-                  uniqueProducts.push(product)
-                  productNames.add(product.name)
-                }
-              })
+          productResponses[index].data
+            .filter((product) => product.available) // Оставляем только товары в наличии
+            .forEach((product) => {
+              if (product.price >= 500 && !productNames.has(product.name)) {
+                uniqueProducts.push(product)
+                productNames.add(product.name)
+              }
+            })
 
-            return {
-              ...category,
-              products: uniqueProducts.slice(0, 2), // Берем 2 уникальных товара из каждой категории
-            }
-          })
+          return {
+            ...category,
+            products: uniqueProducts.slice(0, 2), // Берем 2 уникальных товара из каждой категории
+          }
+        })
 
-          setCategories(categoriesWithProducts)
-        } else {
-          throw new Error('Ответ с сервера не является массивом')
-        }
+        setCategories(categoriesWithProducts)
       } catch (error) {
         console.error('Ошибка при загрузке категорий и товаров:', error)
-        setError('Не удалось загрузить категории и товары. Попробуйте позже.')
       }
     }
 
@@ -114,7 +100,6 @@ const Home = () => {
 
   return (
     <div>
-      {error && <div className="error">{error}</div>} {/* Показ ошибки, если есть */}
       <header className={styles.heroSection}>
         {location.pathname === '/' && <img src={bannerImage} alt={currentTexts.welcome} className={styles.heroBanner} loading="eager" />}
         <h1 className={styles.heroTitle}>{currentTexts.welcome}</h1>
@@ -123,6 +108,7 @@ const Home = () => {
           {currentTexts.shopNow}
         </Link>
       </header>
+
       <section className={styles.featuredProducts}>
         <h2 className={styles.sectionTitle}>{currentTexts.popularProducts}</h2>
         <div className={styles.productsGrid}>
