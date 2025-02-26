@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react'
+import { API_URL } from '../config'
 import { LanguageContext } from '../context/LanguageContext'
 import { useNavigate } from 'react-router-dom'
 import './Profile.css'
@@ -28,7 +29,7 @@ const Profile = () => {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/orders', {
+        const response = await fetch(`${API_URL}/api/orders`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

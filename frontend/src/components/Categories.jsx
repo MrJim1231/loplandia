@@ -16,7 +16,7 @@ const Categories = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const { data: allCategories } = await axios.get(`${API_URL}/categories`, { cache: 'no-store' })
+        const { data: allCategories } = await axios.get(`${API_URL}/api/categories`, { cache: 'no-store' })
         setCategories(allCategories.filter((category) => !excludedCategories.has(category.name)))
       } catch (err) {
         setError(language === 'UA' ? 'Помилка при завантаженні категорій' : 'Ошибка при загрузке категорий')

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import './Products.css' // Создаем стили для компонента продуктов
 
 function Products() {
@@ -10,7 +11,7 @@ function Products() {
   // Функция для загрузки продуктов с API
   const fetchProducts = async (page) => {
     try {
-      const response = await axios.get(`http://localhost:5000/api/products?page=${page}`)
+      const response = await axios.get(`${API_URL}/api/products?page=${page}`)
       setProducts(response.data.products) // Сохраняем полученные продукты
       setTotalPages(response.data.totalPages) // Сохраняем общее количество страниц
     } catch (error) {

@@ -1,6 +1,6 @@
 // Register.js
-
 import React, { useState, useContext, useEffect } from 'react'
+import { API_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './Register.module.css'
@@ -107,7 +107,7 @@ const Register = () => {
     setError('')
 
     try {
-      const url = 'http://localhost:5000/api/auth/register'
+      const url = `${API_URL}/api/auth/register`
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

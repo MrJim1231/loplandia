@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { API_URL } from '../config'
 import { useNavigate, useLocation } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import './ConfirmEmail.css'
@@ -45,7 +46,7 @@ const ConfirmEmail = () => {
     setSuccess(false)
 
     try {
-      const url = 'http://localhost:5000/api/auth/confirm-registration'
+      const url = `${API_URL}/api/auth/confirm-registration`
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

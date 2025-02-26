@@ -1,6 +1,7 @@
 // src/components/ProductDetails.js
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useParams } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 import './ProductDetails.css'
@@ -13,7 +14,7 @@ function ProductDetails() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`)
+        const response = await axios.get(`${API_URL}/api/products/${id}`)
         setProduct(response.data)
       } catch (error) {
         console.error('Ошибка при загрузке данных о продукте:', error)

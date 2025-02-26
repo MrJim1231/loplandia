@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { API_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import './OrderForm.css'
@@ -35,7 +36,7 @@ const OrderForm = ({ cart, getTotalPrice, clearCart }) => {
     if (token) headers.Authorization = `Bearer ${token}`
 
     try {
-      const response = await fetch('http://localhost:5000/api/orders', {
+      const response = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         headers,
         body: JSON.stringify({

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './ResetPassword.module.css' // Импортируем CSS-модуль
@@ -17,7 +18,7 @@ const ResetPassword = () => {
     setIsModalOpen(true) // Открываем модальное окно
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/reset-password-request', { email })
+      const response = await axios.post(`${API_URL}/api/auth/reset-password-request`, { email })
       setMessage(response.data.message)
       setIsRequestSent(true) // Успех — письмо отправлено
       setTimeout(() => {

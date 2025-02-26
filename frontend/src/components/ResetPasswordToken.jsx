@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useNavigate, useParams } from 'react-router-dom'
 import styles from './ResetPasswordToken.module.css' // Импорт стилей
 import { LanguageContext } from '../context/LanguageContext'
@@ -13,7 +14,7 @@ const ResetPasswordToken = () => {
 
   const handleResetPassword = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/auth/reset-password/${token}`, {
+      const response = await axios.post(`${API_URL}/api/auth/reset-password/${token}`, {
         token,
         newPassword,
       })

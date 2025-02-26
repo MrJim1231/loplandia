@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { CartContext } from '../context/CartContext'
 import { LanguageContext } from '../context/LanguageContext'
@@ -25,7 +26,7 @@ const GroupProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/products/group/${groupId}/products`)
+        const response = await axios.get(`${API_URL}/api/products/group/${groupId}/products`)
         setProducts(response.data)
 
         const filtered = response.data.filter(
@@ -59,7 +60,7 @@ const GroupProducts = () => {
     if (selectedProduct) {
       const fetchCategory = async () => {
         try {
-          const response = await axios.get('http://localhost:5000/api/categories')
+          const response = await axios.get(`${API_URL}/api/categories`)
           const category = response.data.find((cat) => cat._id === selectedProduct.categoryId)
 
           if (category) {

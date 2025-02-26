@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { API_URL } from '../config'
 import { useNavigate } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './Login.module.css'
@@ -40,7 +41,7 @@ const Login = () => {
     setError('')
 
     try {
-      const url = 'http://localhost:5000/api/auth/login'
+      const url = `${API_URL}/api/auth/login`
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

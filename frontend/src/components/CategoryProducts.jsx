@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
+import { API_URL } from '../config'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { LanguageContext } from '../context/LanguageContext'
 import styles from './CategoryProducts.module.css'
@@ -20,8 +21,8 @@ const CategoryProducts = () => {
     const fetchProductsAndCategories = async () => {
       try {
         const [categoriesResponse, productResponse] = await Promise.all([
-          axios.get('http://localhost:5000/api/categories'),
-          axios.get(`http://localhost:5000/api/products/category/allproductsofsubcategories/${categoryId}`),
+          axios.get(`${API_URL}/api/categories`),
+          axios.get(`${API_URL}/api/products/category/allproductsofsubcategories/${categoryId}`),
         ])
 
         setCategories(categoriesResponse.data)
