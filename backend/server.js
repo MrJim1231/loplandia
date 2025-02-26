@@ -24,12 +24,10 @@ const port = process.env.PORT || 5000
 
 // Настройка CORS
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: process.env.CLIENT_URL || 'http://localhost:3000',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }
-
-// Применяем CORS middleware
 app.use(cors(corsOptions))
 
 // Применяем сжатие для всех ответов
@@ -37,7 +35,7 @@ app.use(compression())
 
 // Подключение к MongoDB
 mongoose
-  .connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB подключен'))
   .catch((err) => console.error('Ошибка подключения к MongoDB:', err))
 
@@ -45,16 +43,16 @@ mongoose
 app.use(express.json())
 
 // Обслуживание статики (фронтенда)
-const frontendPath = path.resolve(process.cwd(), '..', 'frontend', 'dist')
+const frontendPath = path.resolve(__dirname, '../frontend/dist')
 app.use(express.static(frontendPath))
 
 // Обслуживание файлов из папки assets
-const assetsPath = path.resolve(process.cwd(), '..', 'frontend', 'assets')
+const assetsPath = path.resolve(__dirname, '../frontend/assets')
 app.use('/assets', express.static(assetsPath))
 
 // Обслуживание изображений из папки "public/assets/image"
-const publicAssetsPath = path.resolve(process.cwd(), 'public', 'assets', 'image')
-app.use('/assets/image', express.static(publicAssetsPath)) // Теперь изображения доступны по /assets/image
+const publicAssetsPath = path.resolve(__dirname, 'public/assets/image')
+app.use('/assets/image', express.static(publicAssetsPath))
 
 // Роуты для различных API
 app.use('/api/categories', categoryRoutes)
