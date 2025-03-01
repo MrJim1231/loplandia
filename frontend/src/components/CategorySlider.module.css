@@ -1,0 +1,137 @@
+.container {
+  position: relative;
+}
+
+.sectionTitle {
+  padding: 20px;
+  font-size: 28px;
+}
+/* Контейнер для слайдера */
+.sliderContainer {
+  max-width: 85%; /* Делаем контейнер уже */
+  width: 100% !important; /* Обязательно фиксируем ширину */
+  margin: 0 auto; /* Центрируем */
+  overflow: hidden; /* Обрезаем лишние слайды */
+}
+
+.categorySliderItem {
+  width: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  margin: 0 15px;
+  border-radius: 10px; /* Скругляем углы */
+}
+
+.slick-slide {
+  margin: 0 5px !important; /* Убирает дефолтные отступы слайдера */
+}
+
+/* Настройки для слайдера: 2 карточки на мобильных */
+.slick-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 5px; /* Уменьшаем промежуток между слайдами до 5px */
+}
+
+.categoryLink {
+  display: contents;
+  text-decoration: none; /* Убираем подчеркивание на ссылке */
+  color: black;
+  font-size: 12px;
+  text-align: center;
+}
+
+.categoryImage {
+  max-width: 100%; /* Оставляем как у тебя */
+  height: 120px;
+  padding: 0;
+  margin: 0;
+  border-radius: 15px; /* Скругляем края */
+  overflow: hidden; /* Чтобы картинка не выходила за границы */
+  object-fit: cover; /* Чтобы картинка красиво вписывалась */
+}
+
+/* Стиль для кнопок */
+.prevArrow,
+.nextArrow {
+  position: absolute;
+  top: 50%;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  background-color: transparent;
+}
+
+.prevArrow {
+  left: 50px;
+}
+
+.nextArrow {
+  right: 50px;
+}
+
+.iconArrow {
+  font-size: 30px;
+}
+/* Для маленьких экранов (до 600px) */
+@media (max-width: 600px) {
+  .sliderContainer {
+    max-width: 85%; /* Делаем контейнер уже */
+    width: 100% !important; /* Обязательно фиксируем ширину */
+    margin: 0 auto; /* Центрируем */
+    overflow: hidden; /* Обрезаем лишние слайды */
+  }
+
+  .categorySliderItem {
+    width: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    margin: 0 15px;
+    border-radius: 10px; /* Скругляем углы */
+  }
+
+  .slick-slide {
+    margin: 0 5px !important; /* Убирает дефолтные отступы слайдера */
+  }
+
+  /* Настройки для слайдера: 2 карточки на мобильных */
+  .slick-list {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px; /* Уменьшаем промежуток между слайдами до 5px */
+  }
+
+  .categoryLink {
+    display: contents;
+    text-decoration: none; /* Убираем подчеркивание на ссылке */
+    color: black;
+    font-size: 12px;
+  }
+
+  .categoryImage {
+    max-width: 100%; /* Оставляем как у тебя */
+    height: 120px;
+    padding: 0;
+    margin: 0;
+    border-radius: 15px; /* Скругляем края */
+    overflow: hidden; /* Чтобы картинка не выходила за границы */
+    object-fit: cover; /* Чтобы картинка красиво вписывалась */
+  }
+
+  /* Стиль для кнопок */
+  .prevArrow,
+  .nextArrow {
+    padding: 10px 0px;
+  }
+  .prevArrow {
+    left: 10px;
+  }
+
+  .nextArrow {
+    right: 10px;
+  }
+
+  .iconArrow {
+    font-size: 20px; /* Для мобильных */
+  }
+}
